@@ -20,15 +20,14 @@
   aux_serial: /dev/ttyUSB0
   baud: 115200
   build:
-    source_dir: project/cmake/rp2040
-    build_dir: build/rp2040
+    source_dir: ../../project/cmake/rp2040
+    build_dir: ../../build/rp2040
     artifacts:
       - name: vsf_demo.elf
         format: elf
       - name: vsf_demo.uf2
         format: uf2
   logic_analyzer:
-    cli: DSView/build.dir/dsview-cli
     device: DSLogic
     samplerate: "10M"
     capture_duration: 5
@@ -44,6 +43,7 @@
       i2c_scl: CH4
       i2c_sda: CH5
       gp4: CH6
+  board_pins: ./vsf_test_board_pins.h
   fixtures:
     - uart_loopback
     - i2c_eeprom

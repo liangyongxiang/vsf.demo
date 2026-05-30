@@ -7,6 +7,11 @@ cmake_policy(SET CMP0076 NEW)
 #endif()
 message(STATUS "VSF_PATH: $ENV{VSF_PATH}")
 
+# PICO_SDK_PATH is inside the vsf submodule
+set(__PICO_SDK_PATH ${__VSF_PATH}/source/hal/driver/RaspberryPi/RP2040/vendor)
+set(ENV{PICO_SDK_PATH} ${__PICO_SDK_PATH})
+message(STATUS "PICO_SDK_PATH: $ENV{PICO_SDK_PATH}")
+
 # target, board and application settings
 set(VSF_TARGET RP2040)
 set(BOARD_PATH ../../../board/rp2040)
