@@ -50,6 +50,9 @@ extern vsf_board_t vsf_board;
 extern const i_usb_dc_t VSF_USB_DC0;
 #endif
 
+extern const vsf_test_inst_t vsf_board_test_instances[];
+extern uint8_t vsf_board_test_instance_count;
+
 /*============================ LOCAL VARIABLES ===============================*/
 /*============================ PROTOTYPES ====================================*/
 

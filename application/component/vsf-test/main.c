@@ -42,8 +42,8 @@ int VSF_USER_ENTRY(void)
                     .count   = dimof(__vsf_test_reboot_entries) },
         .suites      = vsf_test_suite_list,
         .suite_count = vsf_test_suite_count,
-        .instances   = __board_test_instances,
-        .instance_count = __board_test_instance_count,
+        .instances   = vsf_board_test_instances,
+        .instance_count = vsf_board_test_instance_count,
     };
     vsf_test_run(&test);
 
