@@ -17,7 +17,7 @@
 
 #include "vsf.h"
 #include "vsf_board.h"
-#include "test/vsf_test/vsf_test_suite_registry.h"
+#include "test/vsf_test/vsf_test_suites.h"
 
 /*============================ ENTRY =========================================*/
 
