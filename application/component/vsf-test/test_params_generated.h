@@ -31,18 +31,6 @@
 #define VSF_TEST_USART_TX_BAUD_DEFAULT_MODE  (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE)
 #define VSF_TEST_USART_TX_BAUD_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_TX_BAUD_CASES_INIT  \
-    { .expect_pass = true, .idx = 0, .baudrate = 9600 },  \
-    { .expect_pass = true, .idx = 1, .baudrate = 19200 },  \
-    { .expect_pass = true, .idx = 2, .baudrate = 38400 },  \
-    { .expect_pass = true, .idx = 3, .baudrate = 57600 },  \
-    { .expect_pass = true, .idx = 4, .baudrate = 115200 },  \
-    { .expect_pass = true, .idx = 5, .baudrate = 230400 },  \
-    { .expect_pass = true, .idx = 6, .baudrate = 460800 },  \
-    { .expect_pass = true, .idx = 7, .baudrate = 921600 },  \
-    { .expect_pass = false, .idx = 8, .baudrate = 0 },  \
-    { .expect_pass = false, .idx = 9, .baudrate = 100000000 },  \
-    { .expect_pass = true, .idx = 10, .baudrate = 115200, .data_size_bytes = 1024 }
 #define VSF_TEST_USART_TX_BAUD_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0, .baudrate = 9600 },  \
     { .expect_pass = true, .idx = 1, .baudrate = 19200 },  \
@@ -82,18 +70,6 @@
 #define VSF_TEST_USART_TX_MODE_DEFAULT_BAUDRATE  115200
 #define VSF_TEST_USART_TX_MODE_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_TX_MODE_CASES_INIT  \
-    { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 1, .mode = (VSF_USART_EVEN_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 2, .mode = (VSF_USART_ODD_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 3, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_7_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 4, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_6_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 5, .mode = (VSF_USART_NO_PARITY | VSF_USART_2_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 6, .mode = (VSF_USART_EVEN_PARITY | VSF_USART_1_STOPBIT | VSF_USART_7_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 7, .mode = (VSF_USART_ODD_PARITY | VSF_USART_2_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 8, .mode = (VSF_USART_FORCE_0_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 9, .mode = (VSF_USART_FORCE_1_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
-    { .expect_pass = true, .idx = 10, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_5_BIT_LENGTH | VSF_USART_TX_ENABLE) }
 #define VSF_TEST_USART_TX_MODE_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
     { .expect_pass = true, .idx = 1, .mode = (VSF_USART_EVEN_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_TX_ENABLE) },  \
@@ -134,12 +110,6 @@
 #define VSF_TEST_USART_RX_DATA_DEFAULT_BAUDRATE  115200
 #define VSF_TEST_USART_RX_DATA_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_RX_DATA_CASES_INIT  \
-    { .expect_pass = true, .idx = 0 },  \
-    { .expect_pass = true, .idx = 1, .data_size_bytes = 64 },  \
-    { .expect_pass = true, .idx = 2, .data_size_bytes = 256 },  \
-    { .expect_pass = true, .idx = 3, .data_size_bytes = 1024 },  \
-    { .expect_pass = true, .idx = 4, .data_size_bytes = 4096 }
 #define VSF_TEST_USART_RX_DATA_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0 },  \
     { .expect_pass = true, .idx = 1, .data_size_bytes = 64 },  \
@@ -167,15 +137,6 @@
 #define VSF_TEST_USART_RX_BAUD_DEFAULT_MODE  (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE)
 #define VSF_TEST_USART_RX_BAUD_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_RX_BAUD_CASES_INIT  \
-    { .expect_pass = true, .idx = 0, .baudrate = 9600 },  \
-    { .expect_pass = true, .idx = 1, .baudrate = 19200 },  \
-    { .expect_pass = true, .idx = 2, .baudrate = 38400 },  \
-    { .expect_pass = true, .idx = 3, .baudrate = 57600 },  \
-    { .expect_pass = true, .idx = 4, .baudrate = 115200 },  \
-    { .expect_pass = true, .idx = 5, .baudrate = 230400 },  \
-    { .expect_pass = true, .idx = 6, .baudrate = 460800 },  \
-    { .expect_pass = true, .idx = 7, .baudrate = 921600 }
 #define VSF_TEST_USART_RX_BAUD_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0, .baudrate = 9600 },  \
     { .expect_pass = true, .idx = 1, .baudrate = 19200 },  \
@@ -209,15 +170,6 @@
 #define VSF_TEST_USART_RX_MODE_DEFAULT_BAUDRATE  115200
 #define VSF_TEST_USART_RX_MODE_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_RX_MODE_CASES_INIT  \
-    { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) },  \
-    { .expect_pass = true, .idx = 1, .mode = (VSF_USART_EVEN_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) },  \
-    { .expect_pass = true, .idx = 2, .mode = (VSF_USART_ODD_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) },  \
-    { .expect_pass = true, .idx = 3, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_7_BIT_LENGTH | VSF_USART_RX_ENABLE) },  \
-    { .expect_pass = true, .idx = 4, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_6_BIT_LENGTH | VSF_USART_RX_ENABLE) },  \
-    { .expect_pass = true, .idx = 5, .mode = (VSF_USART_NO_PARITY | VSF_USART_2_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) },  \
-    { .expect_pass = true, .idx = 6, .mode = (VSF_USART_EVEN_PARITY | VSF_USART_1_STOPBIT | VSF_USART_7_BIT_LENGTH | VSF_USART_RX_ENABLE) },  \
-    { .expect_pass = true, .idx = 7, .mode = (VSF_USART_ODD_PARITY | VSF_USART_2_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) }
 #define VSF_TEST_USART_RX_MODE_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) },  \
     { .expect_pass = true, .idx = 1, .mode = (VSF_USART_EVEN_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) },  \
@@ -252,8 +204,6 @@
 #define VSF_TEST_USART_RX_IRQ_DEFAULT_BAUDRATE  115200
 #define VSF_TEST_USART_RX_IRQ_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_RX_IRQ_CASES_INIT  \
-    { .expect_pass = true, .idx = 0 }
 #define VSF_TEST_USART_RX_IRQ_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0 }
 #define VSF_TEST_USART_RX_IRQ_CASES(data_ref, run_fn, ready)  \
@@ -274,8 +224,6 @@
 #define VSF_TEST_USART_RX_TIMEOUT_DEFAULT_BAUDRATE  115200
 #define VSF_TEST_USART_RX_TIMEOUT_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_RX_TIMEOUT_CASES_INIT  \
-    { .expect_pass = true, .idx = 0 }
 #define VSF_TEST_USART_RX_TIMEOUT_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0 }
 #define VSF_TEST_USART_RX_TIMEOUT_CASES(data_ref, run_fn, ready)  \
@@ -295,8 +243,6 @@
 #define VSF_TEST_USART_RX_PARITY_ERROR_DEFAULT_BAUDRATE  115200
 #define VSF_TEST_USART_RX_PARITY_ERROR_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_RX_PARITY_ERROR_CASES_INIT  \
-    { .expect_pass = true, .idx = 0, .mode = (VSF_USART_EVEN_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) }
 #define VSF_TEST_USART_RX_PARITY_ERROR_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0, .mode = (VSF_USART_EVEN_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) }
 #define VSF_TEST_USART_RX_PARITY_ERROR_CASES(data_ref, run_fn, ready)  \
@@ -316,8 +262,6 @@
 #define VSF_TEST_USART_RX_FRAME_ERROR_DEFAULT_BAUDRATE  115200
 #define VSF_TEST_USART_RX_FRAME_ERROR_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_RX_FRAME_ERROR_CASES_INIT  \
-    { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_2_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) }
 #define VSF_TEST_USART_RX_FRAME_ERROR_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_2_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) }
 #define VSF_TEST_USART_RX_FRAME_ERROR_CASES(data_ref, run_fn, ready)  \
@@ -337,8 +281,6 @@
 #define VSF_TEST_USART_RX_BREAK_ERROR_DEFAULT_BAUDRATE  115200
 #define VSF_TEST_USART_RX_BREAK_ERROR_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_RX_BREAK_ERROR_CASES_INIT  \
-    { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) }
 #define VSF_TEST_USART_RX_BREAK_ERROR_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) }
 #define VSF_TEST_USART_RX_BREAK_ERROR_CASES(data_ref, run_fn, ready)  \
@@ -358,8 +300,6 @@
 #define VSF_TEST_USART_RX_OVERFLOW_ERROR_DEFAULT_BAUDRATE  115200
 #define VSF_TEST_USART_RX_OVERFLOW_ERROR_DEFAULT_EXPECT_PASS  true
 
-#define VSF_TEST_USART_RX_OVERFLOW_ERROR_CASES_INIT  \
-    { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) }
 #define VSF_TEST_USART_RX_OVERFLOW_ERROR_PARAMS_INIT  \
     { .expect_pass = true, .idx = 0, .mode = (VSF_USART_NO_PARITY | VSF_USART_1_STOPBIT | VSF_USART_8_BIT_LENGTH | VSF_USART_RX_ENABLE) }
 #define VSF_TEST_USART_RX_OVERFLOW_ERROR_CASES(data_ref, run_fn, ready)  \
@@ -374,16 +314,6 @@
 
 #define VSF_TEST_USART_TX_FIFO_IRQ_SUITE_TIMEOUT_MS  ((uint32_t)(30.0 * 1000))
 
-#define VSF_TEST_USART_TX_FIFO_IRQ_CASES_INIT  \
-    { .idx = 0, .refill_target = 4 },  \
-    { .idx = 1, .refill_target = 8 },  \
-    { .idx = 2, .refill_target = 16 },  \
-    { .idx = 3, .refill_target = 32 },  \
-    { .idx = 4, .refill_target = 64 },  \
-    { .idx = 5, .refill_target = 128 },  \
-    { .idx = 6, .refill_target = 256 },  \
-    { .idx = 7, .refill_target = 512 },  \
-    { .idx = 8, .refill_target = 1024 }
 #define VSF_TEST_USART_TX_FIFO_IRQ_PARAMS_INIT  \
     { .idx = 0, .refill_target = 4 },  \
     { .idx = 1, .refill_target = 8 },  \
@@ -414,18 +344,6 @@
 
 #define VSF_TEST_USART_RX_FIFO_IRQ_SUITE_TIMEOUT_MS  ((uint32_t)(30.0 * 1000))
 
-#define VSF_TEST_USART_RX_FIFO_IRQ_CASES_INIT  \
-    { .idx = 0, .refill_target = 4, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL },  \
-    { .idx = 1, .refill_target = 4, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_NOT_EMPTY },  \
-    { .idx = 2, .refill_target = 4, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_FULL },  \
-    { .idx = 3, .refill_target = 8, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL },  \
-    { .idx = 4, .refill_target = 16, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL },  \
-    { .idx = 5, .refill_target = 32, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL },  \
-    { .idx = 6, .refill_target = 64, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL },  \
-    { .idx = 7, .refill_target = 128, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL },  \
-    { .idx = 8, .refill_target = 256, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL },  \
-    { .idx = 9, .refill_target = 512, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL },  \
-    { .idx = 10, .refill_target = 1024, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL }
 #define VSF_TEST_USART_RX_FIFO_IRQ_PARAMS_INIT  \
     { .idx = 0, .refill_target = 4, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL },  \
     { .idx = 1, .refill_target = 4, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_NOT_EMPTY },  \
@@ -460,8 +378,6 @@
 
 #define VSF_TEST_USART_REQUEST_TX_IRQ_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_USART_REQUEST_TX_IRQ_CASES_INIT  \
-    { .idx = 0, .refill_target = 4 }
 #define VSF_TEST_USART_REQUEST_TX_IRQ_PARAMS_INIT  \
     { .idx = 0, .refill_target = 4 }
 #define VSF_TEST_USART_REQUEST_TX_IRQ_CASES(data_ref, run_fn, ready)  \
@@ -476,8 +392,6 @@
 
 #define VSF_TEST_USART_REQUEST_RX_IRQ_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_USART_REQUEST_RX_IRQ_CASES_INIT  \
-    { .idx = 0, .refill_target = 4 }
 #define VSF_TEST_USART_REQUEST_RX_IRQ_PARAMS_INIT  \
     { .idx = 0, .refill_target = 4 }
 #define VSF_TEST_USART_REQUEST_RX_IRQ_CASES(data_ref, run_fn, ready)  \
@@ -492,8 +406,6 @@
 
 #define VSF_TEST_USART_REQUEST_CANCEL_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_USART_REQUEST_CANCEL_CASES_INIT  \
-    { .idx = 0, .refill_target = 8, .cancel_after_us = 2000 }
 #define VSF_TEST_USART_REQUEST_CANCEL_PARAMS_INIT  \
     { .idx = 0, .refill_target = 8, .cancel_after_us = 2000 }
 #define VSF_TEST_USART_REQUEST_CANCEL_CASES(data_ref, run_fn, ready)  \
@@ -510,8 +422,6 @@
 
 #define VSF_TEST_USART_BREAK_SIGNAL_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_USART_BREAK_SIGNAL_CASES_INIT  \
-    { .idx = 0, .baudrate = 115200, .hold_ms = 5 }
 #define VSF_TEST_USART_BREAK_SIGNAL_PARAMS_INIT  \
     { .idx = 0, .baudrate = 115200, .hold_ms = 5 }
 #define VSF_TEST_USART_BREAK_SIGNAL_CASES(data_ref, run_fn, ready)  \
@@ -528,10 +438,6 @@
 
 #define VSF_TEST_USART_HW_FLOW_CONTROL_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_USART_HW_FLOW_CONTROL_CASES_INIT  \
-    { .idx = 0, .flow_mode = VSF_USART_RTS_HWCONTROL },  \
-    { .idx = 1, .flow_mode = VSF_USART_CTS_HWCONTROL },  \
-    { .idx = 2, .flow_mode = VSF_USART_RTS_CTS_HWCONTROL }
 #define VSF_TEST_USART_HW_FLOW_CONTROL_PARAMS_INIT  \
     { .idx = 0, .flow_mode = VSF_USART_RTS_HWCONTROL },  \
     { .idx = 1, .flow_mode = VSF_USART_CTS_HWCONTROL },  \
@@ -552,11 +458,6 @@
 
 #define VSF_TEST_USART_RX_BULK_IRQ_SUITE_TIMEOUT_MS  ((uint32_t)(30.0 * 1000))
 
-#define VSF_TEST_USART_RX_BULK_IRQ_CASES_INIT  \
-    { .idx = 0, .data_size_bytes = 64 },  \
-    { .idx = 1, .data_size_bytes = 256 },  \
-    { .idx = 2, .data_size_bytes = 1024 },  \
-    { .idx = 3, .data_size_bytes = 4096 }
 #define VSF_TEST_USART_RX_BULK_IRQ_PARAMS_INIT  \
     { .idx = 0, .data_size_bytes = 64 },  \
     { .idx = 1, .data_size_bytes = 256 },  \
@@ -579,9 +480,6 @@
 
 #define VSF_TEST_USART_RX_FIFO_THRESHOLD_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_USART_RX_FIFO_THRESHOLD_CASES_INIT  \
-    { .idx = 0, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL, .expected_bytes = 16 },  \
-    { .idx = 1, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_FULL, .expected_bytes = 28 }
 #define VSF_TEST_USART_RX_FIFO_THRESHOLD_PARAMS_INIT  \
     { .idx = 0, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_HALF_FULL, .expected_bytes = 16 },  \
     { .idx = 1, .threshold_mode = VSF_USART_RX_FIFO_THRESHOLD_FULL, .expected_bytes = 28 }
@@ -598,9 +496,6 @@
 
 #define VSF_TEST_GPIO_OUTPUT_INPUT_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_OUTPUT_INPUT_CASES_INIT  \
-    { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK },  \
-    { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN }
 #define VSF_TEST_GPIO_OUTPUT_INPUT_PARAMS_INIT  \
     { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK },  \
     { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN }
@@ -617,9 +512,6 @@
 
 #define VSF_TEST_GPIO_TOGGLE_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_TOGGLE_CASES_INIT  \
-    { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK },  \
-    { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN }
 #define VSF_TEST_GPIO_TOGGLE_PARAMS_INIT  \
     { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK },  \
     { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN }
@@ -636,8 +528,6 @@
 
 #define VSF_TEST_GPIO_DIRECTION_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_DIRECTION_CASES_INIT  \
-    { .idx = 0, .pin = VSF_TEST_PIN_SELF_LOOPBACK }
 #define VSF_TEST_GPIO_DIRECTION_PARAMS_INIT  \
     { .idx = 0, .pin = VSF_TEST_PIN_SELF_LOOPBACK }
 #define VSF_TEST_GPIO_DIRECTION_CASES(data_ref, run_fn, ready)  \
@@ -652,9 +542,6 @@
 
 #define VSF_TEST_GPIO_ATOMIC_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_ATOMIC_CASES_INIT  \
-    { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK },  \
-    { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN }
 #define VSF_TEST_GPIO_ATOMIC_PARAMS_INIT  \
     { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK },  \
     { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN }
@@ -671,8 +558,6 @@
 
 #define VSF_TEST_GPIO_PINMUX_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_PINMUX_CASES_INIT  \
-    { .idx = 0, .tx_pin = VSF_TEST_PIN_UART1_TX, .rx_pin = VSF_TEST_PIN_UART1_RX, .baudrate = 115200, .usart = NULL }
 #define VSF_TEST_GPIO_PINMUX_PARAMS_INIT  \
     { .idx = 0, .tx_pin = VSF_TEST_PIN_UART1_TX, .rx_pin = VSF_TEST_PIN_UART1_RX, .baudrate = 115200, .usart = NULL }
 #define VSF_TEST_GPIO_PINMUX_CASES(data_ref, run_fn, ready)  \
@@ -687,9 +572,6 @@
 
 #define VSF_TEST_GPIO_MULTI_PIN_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_MULTI_PIN_CASES_INIT  \
-    { .idx = 0, .out_pin_a = VSF_TEST_PIN_MULTI_A, .in_pin_a = VSF_TEST_PIN_MULTI_A, .out_pin_b = VSF_TEST_PIN_MULTI_B, .in_pin_b = VSF_TEST_PIN_MULTI_B },  \
-    { .idx = 1, .out_pin_a = VSF_TEST_PIN_JUMPER_OUT, .in_pin_a = VSF_TEST_PIN_JUMPER_IN, .out_pin_b = VSF_TEST_PIN_MULTI_C, .in_pin_b = VSF_TEST_PIN_MULTI_D }
 #define VSF_TEST_GPIO_MULTI_PIN_PARAMS_INIT  \
     { .idx = 0, .out_pin_a = VSF_TEST_PIN_MULTI_A, .in_pin_a = VSF_TEST_PIN_MULTI_A, .out_pin_b = VSF_TEST_PIN_MULTI_B, .in_pin_b = VSF_TEST_PIN_MULTI_B },  \
     { .idx = 1, .out_pin_a = VSF_TEST_PIN_JUMPER_OUT, .in_pin_a = VSF_TEST_PIN_JUMPER_IN, .out_pin_b = VSF_TEST_PIN_MULTI_C, .in_pin_b = VSF_TEST_PIN_MULTI_D }
@@ -706,9 +588,6 @@
 
 #define VSF_TEST_GPIO_OPEN_DRAIN_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_OPEN_DRAIN_CASES_INIT  \
-    { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK },  \
-    { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN }
 #define VSF_TEST_GPIO_OPEN_DRAIN_PARAMS_INIT  \
     { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK },  \
     { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN }
@@ -725,10 +604,6 @@
 
 #define VSF_TEST_GPIO_TOGGLE_FREQ_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_GPIO_TOGGLE_FREQ_CASES_INIT  \
-    { .idx = 0, .pin = VSF_TEST_PIN_LA_MONITORED, .toggle_count = 1000 },  \
-    { .idx = 1, .pin = VSF_TEST_PIN_LA_MONITORED, .toggle_count = 10000 },  \
-    { .idx = 2, .pin = VSF_TEST_PIN_LA_MONITORED, .toggle_count = 100000 }
 #define VSF_TEST_GPIO_TOGGLE_FREQ_PARAMS_INIT  \
     { .idx = 0, .pin = VSF_TEST_PIN_LA_MONITORED, .toggle_count = 1000 },  \
     { .idx = 1, .pin = VSF_TEST_PIN_LA_MONITORED, .toggle_count = 10000 },  \
@@ -747,8 +622,6 @@
 
 #define VSF_TEST_GPIO_WRITE_THROUGHPUT_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_GPIO_WRITE_THROUGHPUT_CASES_INIT  \
-    { .idx = 0, .pin = VSF_TEST_PIN_LA_MONITORED, .duration_us = 10000 }
 #define VSF_TEST_GPIO_WRITE_THROUGHPUT_PARAMS_INIT  \
     { .idx = 0, .pin = VSF_TEST_PIN_LA_MONITORED, .duration_us = 10000 }
 #define VSF_TEST_GPIO_WRITE_THROUGHPUT_CASES(data_ref, run_fn, ready)  \
@@ -763,9 +636,6 @@
 
 #define VSF_TEST_GPIO_TOGGLE_STRESS_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_GPIO_TOGGLE_STRESS_CASES_INIT  \
-    { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK, .stress_count = 10000 },  \
-    { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN, .stress_count = 10000 }
 #define VSF_TEST_GPIO_TOGGLE_STRESS_PARAMS_INIT  \
     { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK, .stress_count = 10000 },  \
     { .idx = 1, .out_pin = VSF_TEST_PIN_JUMPER_OUT, .in_pin = VSF_TEST_PIN_JUMPER_IN, .stress_count = 10000 }
@@ -782,8 +652,6 @@
 
 #define VSF_TEST_GPIO_CONCURRENT_PRIO_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_GPIO_CONCURRENT_PRIO_CASES_INIT  \
-    { .idx = 0, .out_pin = VSF_TEST_PIN_CONCURRENT_OUT, .in_pin = VSF_TEST_PIN_CONCURRENT_IN, .duration_ms = 200, .callback_period_us = 100 }
 #define VSF_TEST_GPIO_CONCURRENT_PRIO_PARAMS_INIT  \
     { .idx = 0, .out_pin = VSF_TEST_PIN_CONCURRENT_OUT, .in_pin = VSF_TEST_PIN_CONCURRENT_IN, .duration_ms = 200, .callback_period_us = 100 }
 #define VSF_TEST_GPIO_CONCURRENT_PRIO_CASES(data_ref, run_fn, ready)  \
@@ -798,13 +666,6 @@
 
 #define VSF_TEST_GPIO_EXTI_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_EXTI_CASES_INIT  \
-    { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK, .trigger_mode = VSF_GPIO_EXTI_MODE_FALLING },  \
-    { .idx = 1, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK, .trigger_mode = VSF_GPIO_EXTI_MODE_RISING },  \
-    { .idx = 2, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK, .trigger_mode = VSF_GPIO_EXTI_MODE_RISING_FALLING },  \
-    { .idx = 3, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK, .trigger_mode = VSF_GPIO_EXTI_MODE_LOW_LEVEL },  \
-    { .idx = 4, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK, .trigger_mode = VSF_GPIO_EXTI_MODE_HIGH_LEVEL },  \
-    { .idx = 5, .out_pin = VSF_TEST_PIN_EXTI_ALT_OUT, .in_pin = VSF_TEST_PIN_EXTI_ALT_IN, .trigger_mode = VSF_GPIO_EXTI_MODE_FALLING }
 #define VSF_TEST_GPIO_EXTI_PARAMS_INIT  \
     { .idx = 0, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK, .trigger_mode = VSF_GPIO_EXTI_MODE_FALLING },  \
     { .idx = 1, .out_pin = VSF_TEST_PIN_SELF_LOOPBACK, .in_pin = VSF_TEST_PIN_SELF_LOOPBACK, .trigger_mode = VSF_GPIO_EXTI_MODE_RISING },  \
@@ -829,8 +690,6 @@
 
 #define VSF_TEST_GPIO_IRQ_LATENCY_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_IRQ_LATENCY_CASES_INIT  \
-    { .idx = 0, .pin = VSF_TEST_PIN_SELF_LOOPBACK, .max_latency_ns = 50000 }
 #define VSF_TEST_GPIO_IRQ_LATENCY_PARAMS_INIT  \
     { .idx = 0, .pin = VSF_TEST_PIN_SELF_LOOPBACK, .max_latency_ns = 50000 }
 #define VSF_TEST_GPIO_IRQ_LATENCY_CASES(data_ref, run_fn, ready)  \
@@ -845,8 +704,6 @@
 
 #define VSF_TEST_GPIO_IRQ_LIFECYCLE_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_IRQ_LIFECYCLE_CASES_INIT  \
-    { .idx = 0, .pin = VSF_TEST_PIN_SELF_LOOPBACK }
 #define VSF_TEST_GPIO_IRQ_LIFECYCLE_PARAMS_INIT  \
     { .idx = 0, .pin = VSF_TEST_PIN_SELF_LOOPBACK }
 #define VSF_TEST_GPIO_IRQ_LIFECYCLE_CASES(data_ref, run_fn, ready)  \
@@ -863,10 +720,6 @@
 
 #define VSF_TEST_GPIO_SYSTIMER_HEALTH_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_SYSTIMER_HEALTH_CASES_INIT  \
-    { .idx = 0, .pin = VSF_TEST_PIN_LA_MONITORED, .interval_ms = 10, .toggle_count = 10 },  \
-    { .idx = 1, .pin = VSF_TEST_PIN_LA_MONITORED, .interval_ms = 50, .toggle_count = 10 },  \
-    { .idx = 2, .pin = VSF_TEST_PIN_LA_MONITORED, .interval_ms = 100, .toggle_count = 5 }
 #define VSF_TEST_GPIO_SYSTIMER_HEALTH_PARAMS_INIT  \
     { .idx = 0, .pin = VSF_TEST_PIN_LA_MONITORED, .interval_ms = 10, .toggle_count = 10 },  \
     { .idx = 1, .pin = VSF_TEST_PIN_LA_MONITORED, .interval_ms = 50, .toggle_count = 10 },  \
@@ -885,8 +738,6 @@
 
 #define VSF_TEST_GPIO_ANALOG_MODE_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_ANALOG_MODE_CASES_INIT  \
-    { .idx = 0, .pin = VSF_TEST_PIN_SELF_LOOPBACK }
 #define VSF_TEST_GPIO_ANALOG_MODE_PARAMS_INIT  \
     { .idx = 0, .pin = VSF_TEST_PIN_SELF_LOOPBACK }
 #define VSF_TEST_GPIO_ANALOG_MODE_CASES(data_ref, run_fn, ready)  \
@@ -903,9 +754,6 @@
 
 #define VSF_TEST_GPIO_IO_CHECK_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_GPIO_IO_CHECK_CASES_INIT  \
-    { .idx = 0, .pin = VSF_TEST_PIN_UART1_TX, .baudrate = 115200 },  \
-    { .idx = 1, .pin = VSF_TEST_PIN_UART1_RX, .baudrate = 115200 }
 #define VSF_TEST_GPIO_IO_CHECK_PARAMS_INIT  \
     { .idx = 0, .pin = VSF_TEST_PIN_UART1_TX, .baudrate = 115200 },  \
     { .idx = 1, .pin = VSF_TEST_PIN_UART1_RX, .baudrate = 115200 }
@@ -922,10 +770,6 @@
 
 #define VSF_TEST_I2C_EEPROM_RW_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_I2C_EEPROM_RW_CASES_INIT  \
-    { .idx = 0, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 0, .data_len = 1 },  \
-    { .idx = 1, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 16, .data_len = 4 },  \
-    { .idx = 2, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 32, .data_len = 8 }
 #define VSF_TEST_I2C_EEPROM_RW_PARAMS_INIT  \
     { .idx = 0, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 0, .data_len = 1 },  \
     { .idx = 1, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 16, .data_len = 4 },  \
@@ -944,9 +788,6 @@
 
 #define VSF_TEST_I2C_BUS_SCAN_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_I2C_BUS_SCAN_CASES_INIT  \
-    { .idx = 0, .scl_pin = VSF_TEST_PIN_I2C0_SCL, .sda_pin = VSF_TEST_PIN_I2C0_SDA },  \
-    { .idx = 1, .scl_pin = VSF_TEST_PIN_I2C1_SCL, .sda_pin = VSF_TEST_PIN_I2C1_SDA }
 #define VSF_TEST_I2C_BUS_SCAN_PARAMS_INIT  \
     { .idx = 0, .scl_pin = VSF_TEST_PIN_I2C0_SCL, .sda_pin = VSF_TEST_PIN_I2C0_SDA },  \
     { .idx = 1, .scl_pin = VSF_TEST_PIN_I2C1_SCL, .sda_pin = VSF_TEST_PIN_I2C1_SDA }
@@ -963,8 +804,6 @@
 
 #define VSF_TEST_I2C_EEPROM_PAGE_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_I2C_EEPROM_PAGE_CASES_INIT  \
-    { .idx = 0, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 24, .data_len = 8 }
 #define VSF_TEST_I2C_EEPROM_PAGE_PARAMS_INIT  \
     { .idx = 0, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 24, .data_len = 8 }
 #define VSF_TEST_I2C_EEPROM_PAGE_CASES(data_ref, run_fn, ready)  \
@@ -979,8 +818,6 @@
 
 #define VSF_TEST_I2C_SLAVE_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_I2C_SLAVE_CASES_INIT  \
-    { .idx = 0, .master_i2c_idx = 0, .slave_i2c_idx = 1 }
 #define VSF_TEST_I2C_SLAVE_PARAMS_INIT  \
     { .idx = 0, .master_i2c_idx = 0, .slave_i2c_idx = 1 }
 #define VSF_TEST_I2C_SLAVE_CASES(data_ref, run_fn, ready)  \
@@ -995,10 +832,6 @@
 
 #define VSF_TEST_I2C_EEPROM_RW_FIFO_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_I2C_EEPROM_RW_FIFO_CASES_INIT  \
-    { .idx = 0, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 0, .data_len = 1 },  \
-    { .idx = 1, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 16, .data_len = 4 },  \
-    { .idx = 2, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 32, .data_len = 8 }
 #define VSF_TEST_I2C_EEPROM_RW_FIFO_PARAMS_INIT  \
     { .idx = 0, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 0, .data_len = 1 },  \
     { .idx = 1, .i2c_idx = 0, .eeprom_addr = 80, .mem_addr = 16, .data_len = 4 },  \
@@ -1017,8 +850,6 @@
 
 #define VSF_TEST_I2C_SLAVE_FIFO_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_I2C_SLAVE_FIFO_CASES_INIT  \
-    { .idx = 0, .master_i2c_idx = 0, .slave_i2c_idx = 1 }
 #define VSF_TEST_I2C_SLAVE_FIFO_PARAMS_INIT  \
     { .idx = 0, .master_i2c_idx = 0, .slave_i2c_idx = 1 }
 #define VSF_TEST_I2C_SLAVE_FIFO_CASES(data_ref, run_fn, ready)  \
@@ -1033,8 +864,6 @@
 
 #define VSF_TEST_RTC_SET_GET_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_RTC_SET_GET_CASES_INIT  \
-    { .idx = 0, .rtc_idx = 0 }
 #define VSF_TEST_RTC_SET_GET_PARAMS_INIT  \
     { .idx = 0, .rtc_idx = 0 }
 #define VSF_TEST_RTC_SET_GET_CASES(data_ref, run_fn, ready)  \
@@ -1049,8 +878,6 @@
 
 #define VSF_TEST_RTC_ALARM_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_RTC_ALARM_CASES_INIT  \
-    { .idx = 0, .rtc_idx = 0 }
 #define VSF_TEST_RTC_ALARM_PARAMS_INIT  \
     { .idx = 0, .rtc_idx = 0 }
 #define VSF_TEST_RTC_ALARM_CASES(data_ref, run_fn, ready)  \
@@ -1065,8 +892,6 @@
 
 #define VSF_TEST_RTC_EPOCH_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_RTC_EPOCH_CASES_INIT  \
-    { .idx = 0, .rtc_idx = 0 }
 #define VSF_TEST_RTC_EPOCH_PARAMS_INIT  \
     { .idx = 0, .rtc_idx = 0 }
 #define VSF_TEST_RTC_EPOCH_CASES(data_ref, run_fn, ready)  \
@@ -1081,8 +906,6 @@
 
 #define VSF_TEST_FLASH_ERASE_PROGRAM_READ_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_FLASH_ERASE_PROGRAM_READ_CASES_INIT  \
-    { .idx = 0, .offset = 262144, .size = 256 }
 #define VSF_TEST_FLASH_ERASE_PROGRAM_READ_PARAMS_INIT  \
     { .idx = 0, .offset = 262144, .size = 256 }
 #define VSF_TEST_FLASH_ERASE_PROGRAM_READ_CASES(data_ref, run_fn, ready)  \
@@ -1097,8 +920,6 @@
 
 #define VSF_TEST_FLASH_BOUNDARY_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_FLASH_BOUNDARY_CASES_INIT  \
-    { .idx = 0, .offset = 262144, .size = 512 }
 #define VSF_TEST_FLASH_BOUNDARY_PARAMS_INIT  \
     { .idx = 0, .offset = 262144, .size = 512 }
 #define VSF_TEST_FLASH_BOUNDARY_CASES(data_ref, run_fn, ready)  \
@@ -1113,8 +934,6 @@
 
 #define VSF_TEST_WDT_BASIC_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_WDT_BASIC_CASES_INIT  \
-    { .idx = 0, .timeout_ms = 500, .feed_count = 2, .feed_interval_ms = 10 }
 #define VSF_TEST_WDT_BASIC_PARAMS_INIT  \
     { .idx = 0, .timeout_ms = 500, .feed_count = 2, .feed_interval_ms = 10 }
 #define VSF_TEST_WDT_BASIC_CASES(data_ref, run_fn, ready)  \
@@ -1129,8 +948,6 @@
 
 #define VSF_TEST_WDT_REBOOT_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_WDT_REBOOT_CASES_INIT  \
-    { .idx = 0, .timeout_ms = 200 }
 #define VSF_TEST_WDT_REBOOT_PARAMS_INIT  \
     { .idx = 0, .timeout_ms = 200 }
 #define VSF_TEST_WDT_REBOOT_CASES(data_ref, run_fn, ready)  \
@@ -1145,8 +962,6 @@
 
 #define VSF_TEST_ADC_ONESHOT_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_ADC_ONESHOT_CASES_INIT  \
-    { .idx = 0, .channel = 0, .expected_min = 0, .expected_max = 4095 }
 #define VSF_TEST_ADC_ONESHOT_PARAMS_INIT  \
     { .idx = 0, .channel = 0, .expected_min = 0, .expected_max = 4095 }
 #define VSF_TEST_ADC_ONESHOT_CASES(data_ref, run_fn, ready)  \
@@ -1161,8 +976,6 @@
 
 #define VSF_TEST_ADC_TEMPERATURE_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_ADC_TEMPERATURE_CASES_INIT  \
-    { .idx = 0, .channel_count = 5, .sensor_channel = 4, .temp_raw_min = 500, .temp_raw_max = 1200 }
 #define VSF_TEST_ADC_TEMPERATURE_PARAMS_INIT  \
     { .idx = 0, .channel_count = 5, .sensor_channel = 4, .temp_raw_min = 500, .temp_raw_max = 1200 }
 #define VSF_TEST_ADC_TEMPERATURE_CASES(data_ref, run_fn, ready)  \
@@ -1177,8 +990,6 @@
 
 #define VSF_TEST_ADC_STREAM_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_ADC_STREAM_CASES_INIT  \
-    { .idx = 0, .channel = 4, .sample_count = 100 }
 #define VSF_TEST_ADC_STREAM_PARAMS_INIT  \
     { .idx = 0, .channel = 4, .sample_count = 100 }
 #define VSF_TEST_ADC_STREAM_CASES(data_ref, run_fn, ready)  \
@@ -1193,8 +1004,6 @@
 
 #define VSF_TEST_PWM_BASIC_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_PWM_BASIC_CASES_INIT  \
-    { .idx = 0, .slice = 0, .channel = 0, .gpio = VSF_TEST_PIN_PWM_GPIO_A, .freq_hz = 1000, .period = 100, .pulse = 50, .run_ms = 1000 }
 #define VSF_TEST_PWM_BASIC_PARAMS_INIT  \
     { .idx = 0, .slice = 0, .channel = 0, .gpio = VSF_TEST_PIN_PWM_GPIO_A, .freq_hz = 1000, .period = 100, .pulse = 50, .run_ms = 1000 }
 #define VSF_TEST_PWM_BASIC_CASES(data_ref, run_fn, ready)  \
@@ -1209,8 +1018,6 @@
 
 #define VSF_TEST_PWM_DUAL_CHANNEL_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_PWM_DUAL_CHANNEL_CASES_INIT  \
-    { .idx = 0, .slice = 0, .channel_a = 0, .channel_b = 1, .gpio_a = VSF_TEST_PIN_PWM_GPIO_A, .gpio_b = VSF_TEST_PIN_PWM_GPIO_B, .freq_hz = 1000, .period = 100, .pulse_a = 50, .pulse_b = 25, .run_ms = 1000 }
 #define VSF_TEST_PWM_DUAL_CHANNEL_PARAMS_INIT  \
     { .idx = 0, .slice = 0, .channel_a = 0, .channel_b = 1, .gpio_a = VSF_TEST_PIN_PWM_GPIO_A, .gpio_b = VSF_TEST_PIN_PWM_GPIO_B, .freq_hz = 1000, .period = 100, .pulse_a = 50, .pulse_b = 25, .run_ms = 1000 }
 #define VSF_TEST_PWM_DUAL_CHANNEL_CASES(data_ref, run_fn, ready)  \
@@ -1225,8 +1032,6 @@
 
 #define VSF_TEST_PWM_IRQ_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_PWM_IRQ_CASES_INIT  \
-    { .idx = 0, .slice = 0, .channel = 0, .freq_hz = 1000, .period = 65535, .pulse = 32768, .test_ms = 500 }
 #define VSF_TEST_PWM_IRQ_PARAMS_INIT  \
     { .idx = 0, .slice = 0, .channel = 0, .freq_hz = 1000, .period = 65535, .pulse = 32768, .test_ms = 500 }
 #define VSF_TEST_PWM_IRQ_CASES(data_ref, run_fn, ready)  \
@@ -1241,8 +1046,6 @@
 
 #define VSF_TEST_TIMER_ONESHOT_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_TIMER_ONESHOT_CASES_INIT  \
-    { .idx = 0, .timer_idx = 0, .channel = 0, .period_us = 50000 }
 #define VSF_TEST_TIMER_ONESHOT_PARAMS_INIT  \
     { .idx = 0, .timer_idx = 0, .channel = 0, .period_us = 50000 }
 #define VSF_TEST_TIMER_ONESHOT_CASES(data_ref, run_fn, ready)  \
@@ -1257,8 +1060,6 @@
 
 #define VSF_TEST_TIMER_PERIODIC_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_TIMER_PERIODIC_CASES_INIT  \
-    { .idx = 0, .timer_idx = 0, .channel = 0, .period_us = 10000, .count = 5 }
 #define VSF_TEST_TIMER_PERIODIC_PARAMS_INIT  \
     { .idx = 0, .timer_idx = 0, .channel = 0, .period_us = 10000, .count = 5 }
 #define VSF_TEST_TIMER_PERIODIC_CASES(data_ref, run_fn, ready)  \
@@ -1273,8 +1074,6 @@
 
 #define VSF_TEST_TIMER_ASYNC_SUITE_TIMEOUT_MS  ((uint32_t)(10.0 * 1000))
 
-#define VSF_TEST_TIMER_ASYNC_CASES_INIT  \
-    { .idx = 0, .timer_idx = 0, .channel = 0, .period_us = 10000 }
 #define VSF_TEST_TIMER_ASYNC_PARAMS_INIT  \
     { .idx = 0, .timer_idx = 0, .channel = 0, .period_us = 10000 }
 #define VSF_TEST_TIMER_ASYNC_CASES(data_ref, run_fn, ready)  \
@@ -1289,18 +1088,6 @@
 
 #define VSF_TEST_SPI_LOOPBACK_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_SPI_LOOPBACK_CASES_INIT  \
-    { .idx = 0, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 8 },  \
-    { .idx = 1, .mode = VSF_SPI_MODE_1, .clock_hz = 1000000, .data_len = 8 },  \
-    { .idx = 2, .mode = VSF_SPI_MODE_2, .clock_hz = 1000000, .data_len = 8 },  \
-    { .idx = 3, .mode = VSF_SPI_MODE_3, .clock_hz = 1000000, .data_len = 8 },  \
-    { .idx = 4, .mode = VSF_SPI_MODE_0, .clock_hz = 100000, .data_len = 8 },  \
-    { .idx = 5, .mode = VSF_SPI_MODE_0, .clock_hz = 500000, .data_len = 8 },  \
-    { .idx = 6, .mode = VSF_SPI_MODE_0, .clock_hz = 2000000, .data_len = 8 },  \
-    { .idx = 7, .mode = VSF_SPI_MODE_0, .clock_hz = 5000000, .data_len = 8 },  \
-    { .idx = 8, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 16 },  \
-    { .idx = 9, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 64 },  \
-    { .idx = 10, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 256 }
 #define VSF_TEST_SPI_LOOPBACK_PARAMS_INIT  \
     { .idx = 0, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 8 },  \
     { .idx = 1, .mode = VSF_SPI_MODE_1, .clock_hz = 1000000, .data_len = 8 },  \
@@ -1335,11 +1122,6 @@
 
 #define VSF_TEST_SPI_ASYNC_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_SPI_ASYNC_CASES_INIT  \
-    { .idx = 0, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 16, .test_type = 0 },  \
-    { .idx = 1, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 16, .test_type = 1 },  \
-    { .idx = 2, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 16, .test_type = 2 },  \
-    { .idx = 3, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 256, .test_type = 3 }
 #define VSF_TEST_SPI_ASYNC_PARAMS_INIT  \
     { .idx = 0, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 16, .test_type = 0 },  \
     { .idx = 1, .mode = VSF_SPI_MODE_0, .clock_hz = 1000000, .data_len = 16, .test_type = 1 },  \
@@ -1360,8 +1142,6 @@
 
 #define VSF_TEST_RNG_BASIC_SUITE_TIMEOUT_MS  ((uint32_t)(5.0 * 1000))
 
-#define VSF_TEST_RNG_BASIC_CASES_INIT  \
-    { .idx = 0, .word_count = 16 }
 #define VSF_TEST_RNG_BASIC_PARAMS_INIT  \
     { .idx = 0, .word_count = 16 }
 #define VSF_TEST_RNG_BASIC_CASES(data_ref, run_fn, ready)  \
@@ -1378,8 +1158,6 @@
 
 #define VSF_TEST_DMA_MEM2MEM_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_DMA_MEM2MEM_CASES_INIT  \
-    { .idx = 0, .expect_pass = true }
 #define VSF_TEST_DMA_MEM2MEM_PARAMS_INIT  \
     { .idx = 0, .expect_pass = true }
 #define VSF_TEST_DMA_MEM2MEM_CASES(data_ref, run_fn, ready)  \
@@ -1396,8 +1174,6 @@
 
 #define VSF_TEST_DMA_MEM2MEM_IRQ_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_DMA_MEM2MEM_IRQ_CASES_INIT  \
-    { .idx = 0, .expect_pass = true }
 #define VSF_TEST_DMA_MEM2MEM_IRQ_PARAMS_INIT  \
     { .idx = 0, .expect_pass = true }
 #define VSF_TEST_DMA_MEM2MEM_IRQ_CASES(data_ref, run_fn, ready)  \
@@ -1414,10 +1190,6 @@
 
 #define VSF_TEST_DMA_SCATTER_GATHER_SUITE_TIMEOUT_MS  ((uint32_t)(15.0 * 1000))
 
-#define VSF_TEST_DMA_SCATTER_GATHER_CASES_INIT  \
-    { .idx = 0, .expect_pass = true },  \
-    { .idx = 1, .expect_pass = true },  \
-    { .idx = 2, .expect_pass = true }
 #define VSF_TEST_DMA_SCATTER_GATHER_PARAMS_INIT  \
     { .idx = 0, .expect_pass = true },  \
     { .idx = 1, .expect_pass = true },  \
