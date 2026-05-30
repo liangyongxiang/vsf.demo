@@ -17,7 +17,7 @@
 
 #include "vsf.h"
 #include "vsf_board.h"
-#include "vsf_test_suite_registry.h"
+#include "test/vsf_test/vsf_test_suite_registry.h"
 
 /*============================ ENTRY =========================================*/
 
@@ -32,12 +32,20 @@ int VSF_USER_ENTRY(void)
     vsf_board_init();
     vsf_start_trace();
 
-    vsf_test_t __vsf_test = {
-        .suites      = __vsf_test_data.suites,
-        .suite_count = dimof(__vsf_test_data.suites),
+    vsf_test_reboot_t *__vsf_test_reboot_entries[] = {
+        vsf_arch_reset,
     };
-    vsf_test_hw_setup(&__vsf_test);
-    vsf_test_run(&__vsf_test);
+
+    vsf_test_t test = {
+        .wdt = { .entries = NULL, .count = 0 },
+        .reboot = { .entries = __vsf_test_reboot_entries,
+                    .count   = dimof(__vsf_test_reboot_entries) },
+        .suites      = __vsf_test_suites,
+        .suite_count = __vsf_test_suite_count,
+        .instances   = __board_test_instances,
+        .instance_count = __board_test_instance_count,
+    };
+    vsf_test_run(&test);
 
     return 0;
 }
