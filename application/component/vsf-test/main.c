@@ -40,8 +40,8 @@ int VSF_USER_ENTRY(void)
         .wdt = { .entries = NULL, .count = 0 },
         .reboot = { .entries = __vsf_test_reboot_entries,
                     .count   = dimof(__vsf_test_reboot_entries) },
-        .suites      = __vsf_test_suites,
-        .suite_count = __vsf_test_suite_count,
+        .suites      = vsf_test_suite_list,
+        .suite_count = vsf_test_suite_count,
         .instances   = __board_test_instances,
         .instance_count = __board_test_instance_count,
     };
