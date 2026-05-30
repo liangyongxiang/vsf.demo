@@ -1,0 +1,42 @@
+[submodule "vsf"]
+	path = vsf
+	url = ../vsf.git
+[submodule "application/shell/sys/linux/applets/busybox/raw"]
+	path = application/shell/sys/linux/applets/busybox/raw
+	url = ../../mirror/busybox.git
+[submodule "application/shell/sys/linux/applets/micropython/raw"]
+	path = application/shell/sys/linux/applets/micropython/raw
+	url = ../../micropython/micropython.git
+[submodule "application/shell/sys/linux/applets/iperf/raw"]
+	path = application/shell/sys/linux/applets/iperf/raw
+	url = ../../esnet/iperf.git
+[submodule "application/shell/sys/linux/applets/openocd/raw"]
+	path = application/shell/sys/linux/applets/openocd/raw
+	url = ../../openocd-org/openocd
+[submodule "application/component/ui/sgl/raw"]
+	path = application/component/ui/sgl/raw
+	url = https://gitee.com/li-shan-asked/sgl
+[submodule "application/shell/sys/linux/applets/chiaki/raw"]
+	path = application/shell/sys/linux/applets/chiaki/raw
+	url = https://git.sr.ht/~thestr4ng3r/chiaki
+[submodule "application/shell/sys/linux/applets/chiaki/3rd-party/opus/raw"]
+	path = application/shell/sys/linux/applets/chiaki/3rd-party/opus/raw
+	url = https://github.com/xiph/opus
+[submodule "application/shell/sys/linux/applets/x11/fltk"]
+	path = application/shell/sys/linux/applets/x11/fltk
+	url = https://github.com/fltk/fltk
+[submodule "application/shell/sys/linux/applets/x11/nanox"]
+	path = application/shell/sys/linux/applets/x11/nanox
+	url = https://github.com/ghaerr/microwindows
+[submodule "application/shell/sys/linux/applets/sdl/raw"]
+	path = application/shell/sys/linux/applets/sdl/raw
+	url = ../../vsf-linux/SDL
+[submodule "application/shell/sys/linux/applets/sdl/sdlpal"]
+	path = application/shell/sys/linux/applets/sdl/sdlpal
+	url = ../../vsf-linux/sdlpal
+[submodule "application/shell/sys/linux/applets/sdl/mgba"]
+	path = application/shell/sys/linux/applets/sdl/mgba
+	url = ../../vsf-linux/mgba
+[submodule "application/shell/sys/linux/applets/usbipd/raw"]
+	path = application/shell/sys/linux/applets/usbipd/raw
+	url = ../../raydudu/usbipd-libusb

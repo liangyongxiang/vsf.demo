@@ -1,0 +1,18 @@
+marker:
+  channel: uart0_tx
+  pattern: "CASE:(\\d+)"
+  delay_ms: 2
+
+include:
+  - usart.yml
+  - gpio.yml
+  - i2c.yml
+  - rtc.yml
+  - flash.yml
+  - wdt.yml
+  - adc.yml
+  - pwm.yml
+  - timer.yml
+  - spi.yml
+  - rng.yml
+  - dma.yml

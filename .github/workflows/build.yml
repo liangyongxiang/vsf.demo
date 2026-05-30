@@ -1,0 +1,97 @@
+name: vsf.demo build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  cmake-projects:
+    runs-on: ubuntu-latest
+    outputs:
+      paths: ${{ steps.find_jobs.outputs.paths }}
+      targets: ${{ steps.find_jobs.outputs.targets }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - id: find_jobs
+      run: |
+        paths=$(find application/ | grep CMakeLists.txt | grep -v "applet" | grep -v "board" | grep -v "distbus" | rev | cut -d'/' -f 2- | rev | jq -R . | jq -s .)
+        echo "paths<<EOF" >> $GITHUB_OUTPUT
+        echo "$paths" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
+        targets=$(echo "aic8800" | jq -R . | jq -s .)
+        echo "targets<<EOF" >> $GITHUB_OUTPUT
+        echo "$targets" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
+        cat $GITHUB_OUTPUT
+
+  cmake-build:
+    runs-on: ubuntu-latest
+    needs: cmake-projects
+    strategy:
+      fail-fast: false
+      matrix:
+        path: ${{ fromJSON(needs.cmake-projects.outputs.paths) }}
+        target: ${{ fromJSON(needs.cmake-projects.outputs.targets) }}
+        cc: ['11.3.Rel1']
+        exclude:
+          # aic8800 does not fit the hardware requirement of component/fs/mount demos, which require vsf_board.fsop & vsf_board.fsinfo
+          - target: "aic8800"
+            path: "application/component/fs/mount/eda"
+          - target: "aic8800"
+            path: "application/component/fs/mount/thread"
+          # aic8800 does not fit the hardware requirement of component/usb/usblyzer demo, which require 2 USBs with one host and one device
+          - target: "aic8800"
+            path: "application/component/usb/usblyzer"
+        include:
+          - target: "aic8800"
+            path: "application/board/aic8800m_uikit/bootloader"
+
+    steps:
+      - name: get latest cmake and ninja
+        uses: lukka/get-cmake@latest
+
+      - name: arm-none-eabi-gcc
+        uses: carlosperate/arm-none-eabi-gcc-action@v1
+        with:
+          release: ${{matrix.cc}}
+
+      - name: install depends
+        run: |
+            sudo apt-get update
+            sudo apt-get install -y libsdl2-dev
+        shell: bash
+
+      - uses: actions/checkout@v2
+        with:
+          submodules: true # without recursive
+
+      - name: checkout vsf with recursive
+        run: cd vsf && git submodule update --init
+      - name: update project
+        run: |
+          sed -i -e "s|application/kernel/helloworld|${{matrix.path}}|g" project/cmake/${{matrix.target}}/CMakeLists.txt
+          if [[ "${{matrix.path}}" == *linux* ]]; then
+            sed -i -e "s|# VSF_USE configurations|# VSF_USE configurations\nset(VSF_USE_LINUX 1)\n    set(VSF_LINUX_USE_SIMPLE_LIBC 1)\nset(VSF_USE_QRCODE 1)|g" project/cmake/${{matrix.target}}/CMakeLists.txt
+          fi
+          if [[ "${{matrix.path}}" == "application/shell/sys/linux/kernel" && "${{matrix.target}}" == 'aic8800' ]]; then
+            sed -i -e "s|# VSF_USE configurations|# VSF_USE configurations\nset(VSF_USE_LITTLEFS 1)\nset(VSF_USE_MBEDTLS 1)\nset(VSF_USE_LWIP 1)\n    set(VSF_LWIP_VENDOR 1)\n|g" project/cmake/${{matrix.target}}/CMakeLists.txt
+            sed -i -e "s|    __VSF_CPP__|    __VSF_CPP__\n    __unix__|g" project/cmake/${{matrix.target}}/CMakeLists.txt
+          fi
+          git diff
+
+      - name: configure cmake
+        working-directory: ${{github.workspace}}/project/cmake/${{matrix.target}}
+        run: |
+          cmake --version
+          cmake -GNinja -B ./build
+        env:
+          VSF_PATH: ${{github.workspace}}
+
+      - name: build
+        working-directory: ${{github.workspace}}/project/cmake/${{matrix.target}}
+        run: cmake --build ./build -v
+

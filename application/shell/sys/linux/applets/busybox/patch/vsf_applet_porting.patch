@@ -1,0 +1,143 @@
+ editors/awk.c      |  2 +-
+ include/libbb.h    | 22 +++++++++++++++++++++-
+ include/platform.h | 14 ++++++++++----
+ init/init.c        |  2 ++
+ libbb/appletlib.c  |  4 ++++
+ 5 files changed, 38 insertions(+), 6 deletions(-)
+
+diff --git a/editors/awk.c b/editors/awk.c
+index 728ee8685..64d1d0f87 100644
+--- a/editors/awk.c
++++ b/editors/awk.c
+@@ -3264,7 +3264,7 @@ static var *evaluate(node *op, var *res)
+ # endif
+ 				R_d = (double)v / 0x8000000000000000ULL;
+ #else
+-# error Not implemented for this value of RAND_MAX
++				R_d = (double)rand() / (RAND_MAX + 1);
+ #endif
+ 				break;
+ 			}
+diff --git a/include/libbb.h b/include/libbb.h
+index cca33a177..c4a389e66 100644
+--- a/include/libbb.h
++++ b/include/libbb.h
+@@ -55,6 +55,22 @@
+ #include <sys/param.h>
+ #include <pwd.h>
+ #include <grp.h>
++
++#ifdef __VSF__
++# include <getopt.h>
++# ifndef __linux__
++#  include <sys/sysinfo.h>
++# endif
++
++# ifndef LONG_BIT
++#  define LONG_BIT 32
++# endif
++
++# ifndef SIGWINCH
++#  define SIGWINCH 28
++# endif
++#endif
++
+ #if ENABLE_FEATURE_SHADOWPASSWDS
+ # if !ENABLE_USE_BB_SHADOW
+ /* If using busybox's shadow implementation, do not include the shadow.h
+@@ -182,7 +198,9 @@
+ 
+ /* Some libc's forget to declare these, do it ourself */
+ 
++#ifndef __VSF__
+ extern char **environ;
++#endif
+ /* klogctl is in libc's klog.h, but we cheat and not #include that */
+ int klogctl(int type, char *b, int len);
+ #ifndef PATH_MAX
+@@ -2414,7 +2432,9 @@ do { \
+ 	(sizeof(field) == 4 ? SWAP_LE32(field) : BUG_wrong_field_size())
+ 
+ 
+-#define ARRAY_SIZE(x) ((unsigned)(sizeof(x) / sizeof((x)[0])))
++#ifndef ARRAY_SIZE
++# define ARRAY_SIZE(x) ((unsigned)(sizeof(x) / sizeof((x)[0])))
++#endif
+ #define BUILD_BUG_ON(condition) ((void)sizeof(char[1 - 2*!!(condition)]))
+ 
+ 
+diff --git a/include/platform.h b/include/platform.h
+index ea0512f36..e78b89bf4 100644
+--- a/include/platform.h
++++ b/include/platform.h
+@@ -24,7 +24,7 @@
+ # endif
+ #endif
+ 
+-#if !__GNUC_PREREQ(2,7)
++#if !__GNUC_PREREQ(2,7) && !defined(__VSF__)
+ # ifndef __attribute__
+ #  define __attribute__(x)
+ # endif
+@@ -65,12 +65,16 @@
+  * to the new pointer) after the function returns a non-NULL value."
+  */
+ #define RETURNS_MALLOC __attribute__ ((malloc))
+-#define PACKED __attribute__ ((__packed__))
++#ifndef PACKED
++# define PACKED __attribute__ ((__packed__))
++#endif
+ #define ALIGNED(m) __attribute__ ((__aligned__(m)))
+ 
+ /* __NO_INLINE__: some gcc's do not honor inlining! :( */
+ #if __GNUC_PREREQ(3,0) && !defined(__NO_INLINE__)
+-# define ALWAYS_INLINE __attribute__ ((always_inline)) inline
++# ifndef ALWAYS_INLINE
++#  define ALWAYS_INLINE __attribute__ ((always_inline)) inline
++# endif
+ /* I've seen a toolchain where I needed __noinline__ instead of noinline */
+ # define NOINLINE      __attribute__((__noinline__))
+ # if !ENABLE_WERROR
+@@ -81,7 +85,9 @@
+ #  define UNUSED_PARAM_RESULT
+ # endif
+ #else
+-# define ALWAYS_INLINE inline
++# ifndef ALWAYS_INLINE
++#  define ALWAYS_INLINE inline
++# endif
+ # define NOINLINE
+ # define DEPRECATED
+ # define UNUSED_PARAM_RESULT
+diff --git a/init/init.c b/init/init.c
+index 1e1ce833d..ce717f41a 100644
+--- a/init/init.c
++++ b/init/init.c
+@@ -682,9 +682,11 @@ static void parse_inittab(void)
+ 		/* Askfirst shell on tty1-4 */
+ 		new_init_action(ASKFIRST, bb_default_login_shell, "");
+ //TODO: VC_1 instead of ""? "" is console -> ctty problems -> angry users
++#ifndef __VSF__
+ 		new_init_action(ASKFIRST, bb_default_login_shell, VC_2);
+ 		new_init_action(ASKFIRST, bb_default_login_shell, VC_3);
+ 		new_init_action(ASKFIRST, bb_default_login_shell, VC_4);
++#endif
+ 		/* Reboot on Ctrl-Alt-Del */
+ 		new_init_action(CTRLALTDEL, "reboot", "");
+ 		/* Umount all filesystems on halt/reboot */
+diff --git a/libbb/appletlib.c b/libbb/appletlib.c
+index d5335d353..af1fbc759 100644
+--- a/libbb/appletlib.c
++++ b/libbb/appletlib.c
+@@ -966,7 +966,11 @@ void FAST_FUNC run_applet_no_and_exit(int applet_no, const char *name, char **ar
+ 		check_suid(applet_no);
+ 
+ 	argc = string_array_len(argv);
++#ifdef __VSF_APPLET_EMBPI__
++	xfunc_error_retval = ((int (*)(int, char **))vsf_applet_remap(NULL, applet_main[applet_no]))(argc, argv);
++#else
+ 	xfunc_error_retval = applet_main[applet_no](argc, argv);
++#endif
+ 
+ 	/* Note: applet_main() may also not return (die on a xfunc or such) */
+ 	xfunc_die();
