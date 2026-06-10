@@ -1791,6 +1791,22 @@ int vsf_linux_create_fhs(void)
         __vsf_linux_bthci.hci_transport_config      = app_btstack_get_hci_transport_config();
         __vsf_linux_bthci.chipset_instance          = app_btstack_get_chipset();
         vsf_linux_fs_bind_bthci(VSF_LINUX_BTHCI_PATH_PREFIX "0", &__vsf_linux_bthci);
+
+        // Auto-init BT at boot so the BT controller powers on and outputs its
+        // ROM boot log (~157 bytes) on UART0 (COM39). This matches the pattern
+        // used by app_standalone (usr_bt.c:usr_bt_init).
+        vsf_trace_info("auto-init BT stack at boot..." VSF_TRACE_CFG_LINEEND);
+        btstack_memory_init();
+        btstack_run_loop_init(app_btstack_get_run_loop());
+        hci_init(app_btstack_get_hci_transport(), app_btstack_get_hci_transport_config());
+        hci_set_chipset(app_btstack_get_chipset());
+        hci_set_link_key_db(btstack_link_key_db_memory_instance());
+        l2cap_init();
+        gap_set_default_link_policy_settings(
+            LM_LINK_POLICY_ENABLE_ROLE_SWITCH | LM_LINK_POLICY_ENABLE_SNIFF_MODE);
+        hci_set_inquiry_mode(INQUIRY_MODE_RSSI_AND_EIR);
+        hci_power_control(HCI_POWER_ON);
+        vsf_trace_info("BT auto-init done" VSF_TRACE_CFG_LINEEND);
 #endif
     }
 
